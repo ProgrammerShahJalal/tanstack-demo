@@ -105,6 +105,27 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {children}
         </div>
       </main>
+
+      <footer className="bg-gray-800 text-white py-8 mt-12">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center">
+            <p className="text-sm text-gray-300">
+              Built with ❤️ by{' '}
+              <a 
+                href="https://shah-jalal.netlify.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors duration-200"
+              >
+                Md Shah Jalal
+              </a>
+            </p>
+            <p className="text-xs text-gray-400 mt-2">
+              © 2025 TanStack Demo. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }

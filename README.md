@@ -198,6 +198,17 @@ This is a learning project. Feel free to:
 
 MIT License - feel free to use this project for learning purposes.
 
+## 👨‍💻 Developer
+
+This project was created by **Md Shah Jalal**.
+
+- 🌐 Website: [https://shah-jalal.netlify.app/](https://shah-jalal.netlify.app/)
+- 💼 Portfolio: Showcasing modern web development skills
+
+---
+
+*Built with ❤️ by [Md Shah Jalal](https://shah-jalal.netlify.app/)*
+
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
