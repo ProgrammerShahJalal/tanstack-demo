@@ -9,7 +9,7 @@ import {
   type SortingState,
   type ColumnDef,
 } from '@tanstack/react-table';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 type User = {
   id: number;

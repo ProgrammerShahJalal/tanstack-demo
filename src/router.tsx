@@ -1,6 +1,5 @@
 import { createRootRoute, createRoute, createRouter, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
-import React from 'react'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import UsersPage from './pages/UsersPage'
