@@ -532,7 +532,7 @@ input[type="checkbox"], input[type="radio"] {
 /* Enhanced button styles */
 button {
   border-radius: var(--radius-md);
-  padding: 0.625rem 1.25rem;
+  padding: 0.5rem 1rem;
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
