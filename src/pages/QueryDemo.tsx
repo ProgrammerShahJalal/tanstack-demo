@@ -172,62 +172,94 @@ const QueryDemo: React.FC = () => {
       </div>
 
       {/* Create New Post Form */}
-      <div className="bg-white p-6 rounded-lg shadow border">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Create New Post</h2>
-        <form onSubmit={handleCreatePost} className="space-y-4">
-          <div>
-            <label htmlFor="user-select" className="block text-sm font-medium text-gray-700">
-              Author
-            </label>
-            <select
-              id="user-select"
-              value={selectedUserId}
-              onChange={(e) => setSelectedUserId(Number(e.target.value))}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-            >
-              {usersQuery.data?.map((user) => (
-                <option key={user.id} value={user.id}>
-                  {user.name} ({user.email})
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label htmlFor="post-title" className="block text-sm font-medium text-gray-700">
-              Title
-            </label>
-            <input
-              id="post-title"
-              type="text"
-              value={newPostTitle}
-              onChange={(e) => setNewPostTitle(e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-              placeholder="Enter post title"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="post-body" className="block text-sm font-medium text-gray-700">
-              Content
-            </label>
-            <textarea
-              id="post-body"
-              value={newPostBody}
-              onChange={(e) => setNewPostBody(e.target.value)}
-              rows={3}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-              placeholder="Enter post content"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={createPostMutation.isPending || !newPostTitle.trim() || !newPostBody.trim()}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {createPostMutation.isPending ? 'Creating...' : 'Create Post'}
-          </button>
-        </form>
+      <div className="bg-white shadow sm:rounded-lg">
+        <div className="px-4 py-5 sm:p-6">
+          <h2 className="text-base/7 font-semibold text-gray-900 mb-6">Create New Post</h2>
+          <form onSubmit={handleCreatePost}>
+            <div className="space-y-12">
+              <div className="border-b border-gray-900/10 pb-12">
+                <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                  {/* Author Selection */}
+                  <div className="sm:col-span-4">
+                    <label htmlFor="user-select" className="block text-sm/6 font-medium text-gray-900">
+                      Author
+                    </label>
+                    <div className="mt-2 grid grid-cols-1">
+                      <select
+                        id="user-select"
+                        value={selectedUserId}
+                        onChange={(e) => setSelectedUserId(Number(e.target.value))}
+                        className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                      >
+                        {usersQuery.data?.map((user) => (
+                          <option key={user.id} value={user.id}>
+                            {user.name} ({user.email})
+                          </option>
+                        ))}
+                      </select>
+                      <svg 
+                        className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" 
+                        viewBox="0 0 16 16" 
+                        fill="currentColor" 
+                        aria-hidden="true"
+                      >
+                        <path fillRule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <div className="sm:col-span-4">
+                    <label htmlFor="post-title" className="block text-sm/6 font-medium text-gray-900">
+                      Title
+                    </label>
+                    <div className="mt-2">
+                      <input
+                        id="post-title"
+                        name="post-title"
+                        type="text"
+                        value={newPostTitle}
+                        onChange={(e) => setNewPostTitle(e.target.value)}
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        placeholder="Enter post title"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="col-span-full">
+                    <label htmlFor="post-body" className="block text-sm/6 font-medium text-gray-900">
+                      Content
+                    </label>
+                    <div className="mt-2">
+                      <textarea
+                        id="post-body"
+                        name="post-body"
+                        value={newPostBody}
+                        onChange={(e) => setNewPostBody(e.target.value)}
+                        rows={3}
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        placeholder="Enter post content"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 flex items-center justify-end gap-x-6">
+              <button
+                type="submit"
+                disabled={createPostMutation.isPending || !newPostTitle.trim() || !newPostBody.trim()}
+                className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {createPostMutation.isPending ? 'Creating...' : 'Create Post'}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
       {/* Posts List */}

@@ -69,20 +69,26 @@ const CreateUserPage: React.FC = () => {
           </svg>
           Back to Users
         </button>
-        <h1 className="text-3xl font-bold text-gray-900">Create New User</h1>
+        <h1 className="text-2xl/8 font-bold text-gray-900">Create New User</h1>
       </div>
 
       <div className="bg-white shadow sm:rounded-lg">
-        <div className="px-4 py-5 sm:p-6">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              form.handleSubmit()
-            }}
-            className="space-y-6"
-          >
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            form.handleSubmit()
+          }}
+        >
+          <div className="space-y-12 px-4 py-5 sm:p-6">
+            {/* Personal Information */}
+            <div className="border-b border-gray-900/10 pb-12">
+              <h2 className="text-base/7 font-semibold text-gray-900">Personal Information</h2>
+              <p className="mt-1 text-sm/6 text-gray-600">
+                Basic contact information for the new user.
+              </p>
+
+              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               {/* Name Field */}
               <form.Field
                 name="name"
@@ -92,21 +98,27 @@ const CreateUserPage: React.FC = () => {
                 }}
               >
                 {(field) => (
-                  <div>
-                    <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
+                  <div className="sm:col-span-3">
+                    <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
                       Name *
                     </label>
-                    <input
-                      id={field.name}
-                      name={field.name}
-                      value={field.state.value}
-                      onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                      className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-                        field.state.meta.errors.length > 0 ? 'border-red-300' : ''
-                      }`}
-                      placeholder="Enter full name"
-                    />
+                    <div className="mt-2">
+                      <input
+                        id={field.name}
+                        name={field.name}
+                        type="text"
+                        autoComplete="name"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${
+                          field.state.meta.errors.length > 0 
+                            ? 'outline-red-300 focus:outline-red-600' 
+                            : 'outline-gray-300 focus:outline-indigo-600'
+                        }`}
+                        placeholder="Enter full name"
+                      />
+                    </div>
                     {field.state.meta.errors.length > 0 && (
                       <p className="mt-2 text-sm text-red-600">{field.state.meta.errors[0]}</p>
                     )}
@@ -126,22 +138,27 @@ const CreateUserPage: React.FC = () => {
                 }}
               >
                 {(field) => (
-                  <div>
-                    <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
+                  <div className="sm:col-span-3">
+                    <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
                       Email *
                     </label>
-                    <input
-                      id={field.name}
-                      name={field.name}
-                      type="email"
-                      value={field.state.value}
-                      onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                      className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-                        field.state.meta.errors.length > 0 ? 'border-red-300' : ''
-                      }`}
-                      placeholder="Enter email address"
-                    />
+                    <div className="mt-2">
+                      <input
+                        id={field.name}
+                        name={field.name}
+                        type="email"
+                        autoComplete="email"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${
+                          field.state.meta.errors.length > 0 
+                            ? 'outline-red-300 focus:outline-red-600' 
+                            : 'outline-gray-300 focus:outline-indigo-600'
+                        }`}
+                        placeholder="Enter email address"
+                      />
+                    </div>
                     {field.state.meta.errors.length > 0 && (
                       <p className="mt-2 text-sm text-red-600">{field.state.meta.errors[0]}</p>
                     )}
@@ -158,22 +175,27 @@ const CreateUserPage: React.FC = () => {
                 }}
               >
                 {(field) => (
-                  <div>
-                    <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
+                  <div className="sm:col-span-3">
+                    <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
                       Phone *
                     </label>
-                    <input
-                      id={field.name}
-                      name={field.name}
-                      type="tel"
-                      value={field.state.value}
-                      onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                      className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-                        field.state.meta.errors.length > 0 ? 'border-red-300' : ''
-                      }`}
-                      placeholder="Enter phone number"
-                    />
+                    <div className="mt-2">
+                      <input
+                        id={field.name}
+                        name={field.name}
+                        type="tel"
+                        autoComplete="tel"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${
+                          field.state.meta.errors.length > 0 
+                            ? 'outline-red-300 focus:outline-red-600' 
+                            : 'outline-gray-300 focus:outline-indigo-600'
+                        }`}
+                        placeholder="Enter phone number"
+                      />
+                    </div>
                     {field.state.meta.errors.length > 0 && (
                       <p className="mt-2 text-sm text-red-600">{field.state.meta.errors[0]}</p>
                     )}
@@ -184,29 +206,36 @@ const CreateUserPage: React.FC = () => {
               {/* Website Field */}
               <form.Field name="website">
                 {(field) => (
-                  <div>
-                    <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
+                  <div className="sm:col-span-3">
+                    <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
                       Website
                     </label>
-                    <input
-                      id={field.name}
-                      name={field.name}
-                      type="url"
-                      value={field.state.value}
-                      onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      placeholder="Enter website URL"
-                    />
+                    <div className="mt-2">
+                      <input
+                        id={field.name}
+                        name={field.name}
+                        type="url"
+                        autoComplete="url"
+                        value={field.state.value}
+                        onBlur={field.handleBlur}
+                        onChange={(e) => field.handleChange(e.target.value)}
+                        className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                        placeholder="Enter website URL"
+                      />
+                    </div>
                   </div>
                 )}
               </form.Field>
             </div>
 
             {/* Address Section */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Address Information</h3>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="border-b border-gray-900/10 pb-12">
+              <h2 className="text-base/7 font-semibold text-gray-900">Address Information</h2>
+              <p className="mt-1 text-sm/6 text-gray-600">
+                Address information for the user.
+              </p>
+
+              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <form.Field
                   name="address.street"
                   validators={{
@@ -215,21 +244,27 @@ const CreateUserPage: React.FC = () => {
                   }}
                 >
                   {(field) => (
-                    <div>
-                      <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
+                    <div className="col-span-full">
+                      <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
                         Street Address *
                       </label>
-                      <input
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-                          field.state.meta.errors.length > 0 ? 'border-red-300' : ''
-                        }`}
-                        placeholder="Enter street address"
-                      />
+                      <div className="mt-2">
+                        <input
+                          id={field.name}
+                          name={field.name}
+                          type="text"
+                          autoComplete="street-address"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${
+                            field.state.meta.errors.length > 0 
+                              ? 'outline-red-300 focus:outline-red-600' 
+                              : 'outline-gray-300 focus:outline-indigo-600'
+                          }`}
+                          placeholder="Enter street address"
+                        />
+                      </div>
                       {field.state.meta.errors.length > 0 && (
                         <p className="mt-2 text-sm text-red-600">{field.state.meta.errors[0]}</p>
                       )}
@@ -245,21 +280,27 @@ const CreateUserPage: React.FC = () => {
                   }}
                 >
                   {(field) => (
-                    <div>
-                      <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
+                    <div className="sm:col-span-2 sm:col-start-1">
+                      <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
                         City *
                       </label>
-                      <input
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-                          field.state.meta.errors.length > 0 ? 'border-red-300' : ''
-                        }`}
-                        placeholder="Enter city"
-                      />
+                      <div className="mt-2">
+                        <input
+                          id={field.name}
+                          name={field.name}
+                          type="text"
+                          autoComplete="address-level2"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6 ${
+                            field.state.meta.errors.length > 0 
+                              ? 'outline-red-300 focus:outline-red-600' 
+                              : 'outline-gray-300 focus:outline-indigo-600'
+                          }`}
+                          placeholder="Enter city"
+                        />
+                      </div>
                       {field.state.meta.errors.length > 0 && (
                         <p className="mt-2 text-sm text-red-600">{field.state.meta.errors[0]}</p>
                       )}
@@ -269,19 +310,23 @@ const CreateUserPage: React.FC = () => {
 
                 <form.Field name="address.zipcode">
                   {(field) => (
-                    <div>
-                      <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
-                        ZIP Code
+                    <div className="sm:col-span-2">
+                      <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
+                        ZIP / Postal Code
                       </label>
-                      <input
-                        id={field.name}
-                        name={field.name}
-                        value={field.state.value}
-                        onBlur={field.handleBlur}
-                        onChange={(e) => field.handleChange(e.target.value)}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                        placeholder="Enter ZIP code"
-                      />
+                      <div className="mt-2">
+                        <input
+                          id={field.name}
+                          name={field.name}
+                          type="text"
+                          autoComplete="postal-code"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                          placeholder="Enter ZIP code"
+                        />
+                      </div>
                     </div>
                   )}
                 </form.Field>
@@ -289,34 +334,44 @@ const CreateUserPage: React.FC = () => {
             </div>
 
             {/* Company Section */}
-            <div className="border-t border-gray-200 pt-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Company Information</h3>
-              <form.Field name="company.name">
-                {(field) => (
-                  <div>
-                    <label htmlFor={field.name} className="block text-sm font-medium text-gray-700">
-                      Company Name
-                    </label>
-                    <input
-                      id={field.name}
-                      name={field.name}
-                      value={field.state.value}
-                      onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-                      placeholder="Enter company name"
-                    />
-                  </div>
-                )}
-              </form.Field>
+            <div className="border-b border-gray-900/10 pb-12">
+              <h2 className="text-base/7 font-semibold text-gray-900">Company Information</h2>
+              <p className="mt-1 text-sm/6 text-gray-600">
+                Optional company information.
+              </p>
+
+              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <form.Field name="company.name">
+                  {(field) => (
+                    <div className="sm:col-span-4">
+                      <label htmlFor={field.name} className="block text-sm/6 font-medium text-gray-900">
+                        Company Name
+                      </label>
+                      <div className="mt-2">
+                        <input
+                          id={field.name}
+                          name={field.name}
+                          type="text"
+                          autoComplete="organization"
+                          value={field.state.value}
+                          onBlur={field.handleBlur}
+                          onChange={(e) => field.handleChange(e.target.value)}
+                          className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                          placeholder="Enter company name"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </form.Field>
+              </div>
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-end space-x-3">
+            <div className="mt-6 flex items-center justify-end gap-x-6">
               <button
                 type="button"
                 onClick={() => navigate({ to: '/users' })}
-                className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="text-sm/6 font-semibold text-gray-900 hover:text-gray-700"
               >
                 Cancel
               </button>
@@ -327,7 +382,7 @@ const CreateUserPage: React.FC = () => {
                   <button
                     type="submit"
                     disabled={!canSubmit || isSubmitting || mutation.isPending}
-                    className="bg-blue-600 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {mutation.isPending ? 'Creating...' : 'Create User'}
                   </button>
@@ -342,8 +397,9 @@ const CreateUserPage: React.FC = () => {
                 </div>
               </div>
             )}
-          </form>
-        </div>
+          </div>
+          </div>
+        </form>
       </div>
     </div>
   )

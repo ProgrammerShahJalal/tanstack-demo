@@ -54,20 +54,24 @@ const TableDemo: React.FC = () => {
     {
       id: 'select',
       header: ({ table }) => (
-        <input
-          type="checkbox"
-          checked={table.getIsAllPageRowsSelected()}
-          onChange={table.getToggleAllPageRowsSelectedHandler()}
-          className="rounded"
-        />
+        <div className="flex h-6 items-center">
+          <input
+            type="checkbox"
+            checked={table.getIsAllPageRowsSelected()}
+            onChange={table.getToggleAllPageRowsSelectedHandler()}
+            className="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+          />
+        </div>
       ),
       cell: ({ row }) => (
-        <input
-          type="checkbox"
-          checked={row.getIsSelected()}
-          onChange={row.getToggleSelectedHandler()}
-          className="rounded"
-        />
+        <div className="flex h-6 items-center">
+          <input
+            type="checkbox"
+            checked={row.getIsSelected()}
+            onChange={row.getToggleSelectedHandler()}
+            className="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+          />
+        </div>
       ),
       enableSorting: false,
       enableHiding: false,
@@ -208,76 +212,84 @@ const TableDemo: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900">TanStack Table Demo</h1>
-        <p className="mt-2 text-gray-600">
+        <h1 className="text-2xl/8 font-bold text-gray-900">TanStack Table Demo</h1>
+        <p className="mt-1 text-sm/6 text-gray-600">
           Advanced table features including sorting, filtering, pagination, and row selection
         </p>
       </div>
 
       {/* Controls */}
-      <div className="bg-white p-6 rounded-lg shadow border space-y-4">
-        <div className="flex flex-col sm:flex-row gap-4">
+      <div className="bg-white p-6 rounded-lg shadow border space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {/* Global Search */}
-          <div className="flex-1">
-            <label htmlFor="global-search" className="block text-sm font-medium text-gray-700 mb-1">
+          <div>
+            <label htmlFor="global-search" className="block text-sm/6 font-medium text-gray-900">
               Global Search
             </label>
-            <input
-              id="global-search"
-              value={globalFilter ?? ''}
-              onChange={(e) => setGlobalFilter(e.target.value)}
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-              placeholder="Search all columns..."
-            />
+            <div className="mt-2">
+              <input
+                id="global-search"
+                value={globalFilter ?? ''}
+                onChange={(e) => setGlobalFilter(e.target.value)}
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                placeholder="Search all columns..."
+              />
+            </div>
           </div>
 
           {/* Column Filters */}
-          <div className="flex-1">
-            <label htmlFor="name-filter" className="block text-sm font-medium text-gray-700 mb-1">
+          <div>
+            <label htmlFor="name-filter" className="block text-sm/6 font-medium text-gray-900">
               Filter by Name
             </label>
-            <input
-              id="name-filter"
-              value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
-              onChange={(e) => table.getColumn('name')?.setFilterValue(e.target.value)}
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-              placeholder="Filter names..."
-            />
+            <div className="mt-2">
+              <input
+                id="name-filter"
+                value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+                onChange={(e) => table.getColumn('name')?.setFilterValue(e.target.value)}
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                placeholder="Filter names..."
+              />
+            </div>
           </div>
 
-          <div className="flex-1">
-            <label htmlFor="email-filter" className="block text-sm font-medium text-gray-700 mb-1">
+          <div>
+            <label htmlFor="email-filter" className="block text-sm/6 font-medium text-gray-900">
               Filter by Email
             </label>
-            <input
-              id="email-filter"
-              value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
-              onChange={(e) => table.getColumn('email')?.setFilterValue(e.target.value)}
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
-              placeholder="Filter emails..."
-            />
+            <div className="mt-2">
+              <input
+                id="email-filter"
+                value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
+                onChange={(e) => table.getColumn('email')?.setFilterValue(e.target.value)}
+                className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                placeholder="Filter emails..."
+              />
+            </div>
           </div>
         </div>
 
         {/* Column Visibility */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Column Visibility</label>
-          <div className="flex flex-wrap gap-4">
+          <label className="block text-sm/6 font-medium text-gray-900 mb-3">Column Visibility</label>
+          <div className="flex flex-wrap gap-6">
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())
               .map((column) => (
-                <label key={column.id} className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    checked={column.getIsVisible()}
-                    onChange={column.getToggleVisibilityHandler()}
-                    className="rounded"
-                  />
-                  <span className="text-sm text-gray-700 capitalize">
+                <div key={column.id} className="flex items-center gap-x-3">
+                  <div className="flex h-6 items-center">
+                    <input
+                      type="checkbox"
+                      checked={column.getIsVisible()}
+                      onChange={column.getToggleVisibilityHandler()}
+                      className="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    />
+                  </div>
+                  <label className="text-sm/6 text-gray-900 capitalize">
                     {column.id}
-                  </span>
-                </label>
+                  </label>
+                </div>
               ))}
           </div>
         </div>
@@ -358,19 +370,29 @@ const TableDemo: React.FC = () => {
                 Page <span className="font-medium">{table.getState().pagination.pageIndex + 1}</span> of{' '}
                 <span className="font-medium">{table.getPageCount()}</span>
               </p>
-              <select
-                value={table.getState().pagination.pageSize}
-                onChange={(e) => {
-                  table.setPageSize(Number(e.target.value))
-                }}
-                className="rounded-md border-gray-300 text-sm"
-              >
-                {[5, 10, 20, 30].map((pageSize) => (
-                  <option key={pageSize} value={pageSize}>
-                    Show {pageSize}
-                  </option>
-                ))}
-              </select>
+              <div className="grid grid-cols-1">
+                <select
+                  value={table.getState().pagination.pageSize}
+                  onChange={(e) => {
+                    table.setPageSize(Number(e.target.value))
+                  }}
+                  className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                >
+                  {[5, 10, 20, 30].map((pageSize) => (
+                    <option key={pageSize} value={pageSize}>
+                      Show {pageSize}
+                    </option>
+                  ))}
+                </select>
+                <svg 
+                  className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4" 
+                  viewBox="0 0 16 16" 
+                  fill="currentColor" 
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
+                </svg>
+              </div>
             </div>
             <div>
               <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
