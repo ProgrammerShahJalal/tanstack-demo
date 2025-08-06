@@ -28,10 +28,11 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/query-demo"
-              className="btn-primary w-full group-hover:shadow-lg transition-all duration-300"
+              className="btn-primary w-full group-hover:text-purple-500 transition-all duration-300"
             >
               Explore Query →
             </Link>
+            
           </div>
         </div>
 
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/table-demo"
-              className="btn-success w-full group-hover:shadow-lg transition-all duration-300"
+                className="btn-primary w-full group-hover:text-purple-500 transition-all duration-300"
             >
               Explore Table →
             </Link>
@@ -64,7 +65,7 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/form-demo"
-              className="btn-warning w-full group-hover:shadow-lg transition-all duration-300"
+              className="btn-primary w-full group-hover:text-purple-500 transition-all duration-300"
             >
               Explore Form →
             </Link>
@@ -82,7 +83,7 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/users"
-              className="btn-danger w-full group-hover:shadow-lg transition-all duration-300"
+                className="btn-primary w-full group-hover:text-purple-500 transition-all duration-300"
             >
               Explore Router →
             </Link>
@@ -241,10 +242,10 @@ const Home: React.FC = () => {
             interactive examples and explanations of key concepts.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/users" className="btn-primary">
+            <Link to="/users" className="btn-primary bg-purple-500 text-white hover:bg-purple-600 px-4 py-2 rounded-lg transition-colors duration-200">
               View Users Demo
             </Link>
-            <Link to="/query-demo" className="btn-outline">
+            <Link to="/query-demo" className="btn-outline bg-blue-500 text-white hover:bg-blue-600 px-4 py-2 rounded-lg transition-colors duration-200">
               Try Query Features
             </Link>
           </div>

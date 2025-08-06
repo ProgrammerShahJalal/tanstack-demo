@@ -19,7 +19,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex items-center justify-between">
             <Link 
               to="/" 
-              className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+              className={`text-xl font-bold transition-all duration-200 ${
+                isActive('/') 
+                  ? 'text-green-700 transform scale-105' 
+                  : 'bg-gradient-to-tr from-primary to-purple-600 bg-clip-text text-transparent'
+              }`}
+              style={{ textDecoration: 'none' }}
             >
               TanStack Demo
             </Link>
@@ -28,9 +33,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 to="/"
                 className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   isActive('/') 
-                    ? 'bg-primary text-white shadow-md transform scale-105' 
+                    ? 'text-green-700 transform scale-105' 
                     : 'text-text-secondary hover:text-primary hover:bg-surface hover:scale-105'
                 }`}
+                style={{ textDecoration: 'none' }}
               >
                 Home
               </Link>
@@ -38,9 +44,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 to="/users"
                 className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   isActive('/users') 
-                    ? 'bg-primary text-white shadow-md transform scale-105' 
+                    ? 'text-green-700 transform scale-105' 
                     : 'text-text-secondary hover:text-primary hover:bg-surface hover:scale-105'
                 }`}
+                style={{ textDecoration: 'none' }}
               >
                 Users
               </Link>
@@ -48,9 +55,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 to="/users/create"
                 className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   isActive('/users/create') 
-                    ? 'bg-primary text-white shadow-md transform scale-105' 
+                    ? 'text-green-700 transform scale-105' 
                     : 'text-text-secondary hover:text-primary hover:bg-surface hover:scale-105'
                 }`}
+                style={{ textDecoration: 'none' }}
               >
                 Create User
               </Link>
@@ -58,9 +66,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 to="/query-demo"
                 className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   isActive('/query-demo') 
-                    ? 'bg-primary text-white shadow-md transform scale-105' 
+                    ? 'text-green-700 transform scale-105' 
                     : 'text-text-secondary hover:text-primary hover:bg-surface hover:scale-105'
                 }`}
+                style={{ textDecoration: 'none' }}
               >
                 Query Demo
               </Link>
@@ -68,9 +77,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 to="/table-demo"
                 className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   isActive('/table-demo') 
-                    ? 'bg-primary text-white shadow-md transform scale-105' 
+                    ? 'text-green-700 transform scale-105' 
                     : 'text-text-secondary hover:text-primary hover:bg-surface hover:scale-105'
                 }`}
+                style={{ textDecoration: 'none' }}
               >
                 Table Demo
               </Link>
@@ -78,9 +88,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 to="/form-demo"
                 className={`px-4 py-2 rounded-lg transition-all duration-200 ${
                   isActive('/form-demo') 
-                    ? 'bg-primary text-white shadow-md transform scale-105' 
+                    ? 'text-green-700 transform scale-105' 
                     : 'text-text-secondary hover:text-primary hover:bg-surface hover:scale-105'
                 }`}
+                style={{ textDecoration: 'none' }}
               >
                 Form Demo
               </Link>
